@@ -41,3 +41,11 @@ variable "ssm_private_subnet_3" {
 variable "ssm_vpc_id" {
 
 }
+
+variable "environment_variables" {
+
+}
+
+variable "capabilities" {
+
+}
