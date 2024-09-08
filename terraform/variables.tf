@@ -43,9 +43,10 @@ variable "ssm_vpc_id" {
 }
 
 variable "environment_variables" {
+  type = list(any)
 
 }
 
 variable "capabilities" {
-
+  type = list(any)
 }
