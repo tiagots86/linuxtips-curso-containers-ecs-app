@@ -33,3 +33,13 @@ environment_variables = [
 ]
 
 capabilities = ["EC2"]
+
+service_healthcheck = {
+  healthy_threshold = 3
+  unhealthy_threshold = 10
+  timeout = 10
+  interval = 60
+  matcher = "200-399"
+  path = "/healthcheck"
+  port = 8080
+}

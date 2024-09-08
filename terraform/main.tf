@@ -10,6 +10,7 @@ module "service" {
   region                      = var.region
   environment_variables       = var.environment_variables
   capabilities                = var.capabilities
+  service_healthcheck         = var.service_healthcheck
 
   vpc_id = data.aws_ssm_parameter.vpc_id.value
   private_subnets = [
