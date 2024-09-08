@@ -22,7 +22,7 @@ variable "service_memory" {
 
 }
 
-variable "service_listener" {
+variable "ssm_listener" {
 
 }
 
