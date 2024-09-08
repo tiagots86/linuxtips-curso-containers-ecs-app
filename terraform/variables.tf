@@ -38,10 +38,6 @@ variable "ssm_private_subnet_3" {
 
 }
 
-variable "ssm_lister" {
-
-}
-
 variable "ssm_vpc_id" {
 
 }
