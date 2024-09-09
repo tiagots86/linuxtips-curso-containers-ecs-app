@@ -35,11 +35,17 @@ environment_variables = [
 capabilities = ["EC2"]
 
 service_healthcheck = {
-  healthy_threshold = 3
+  healthy_threshold   = 3
   unhealthy_threshold = 10
-  timeout = 10
-  interval = 60
-  matcher = "200-399"
-  path = "/healthcheck"
-  port = 8080
+  timeout             = 10
+  interval            = 60
+  matcher             = "200-399"
+  path                = "/healthcheck"
+  port                = 8080
 }
+
+service_launch_type = "EC2"
+service_task_count  = 3
+service_hosts = [
+  "chip.linuxtips.demo"
+]

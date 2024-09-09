@@ -11,6 +11,9 @@ module "service" {
   environment_variables       = var.environment_variables
   capabilities                = var.capabilities
   service_healthcheck         = var.service_healthcheck
+  service_launch_type         = var.service_launch_type
+  service_task_count          = var.service_task_count
+  service_hosts               = var.service_hosts
 
   vpc_id = data.aws_ssm_parameter.vpc_id.value
   private_subnets = [
