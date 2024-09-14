@@ -136,3 +136,7 @@ variable "scale_in_evaluation_periods" {
 variable "scale_in_coodown" {
 
 }
+
+variable "scale_tracking_cpu" {
+
+}

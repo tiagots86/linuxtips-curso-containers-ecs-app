@@ -42,4 +42,5 @@ module "service" {
   scale_in_period               = var.scale_in_period
   scale_in_evaluation_periods   = var.scale_in_evaluation_periods
   scale_in_coodown              = var.scale_in_coodown
+  scale_tracking_cpu            = var.scale_tracking_cpu
 }
