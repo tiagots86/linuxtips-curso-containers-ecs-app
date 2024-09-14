@@ -50,6 +50,16 @@ service_hosts = [
   "chip.linuxtips.demo"
 ]
 
+#Scaling
 scale_type   = "cpu"
 task_minimum = "3"
 task_maximum = "12"
+
+#ScalingCPU
+scale_out_cpu_threshold = 50
+scale_out_adjustment = 2
+scale_out_comparison_operator = "GreaterThanOrEqualToThreshold"
+scale_out_statistic = "Average"
+scale_out_period = 60
+scale_out_evaluation_periods = 2
+scale_out_coodown = 60
