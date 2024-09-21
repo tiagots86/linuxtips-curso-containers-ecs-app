@@ -44,7 +44,8 @@ service_healthcheck = {
   port                = 8080
 }
 
-service_launch_type = "EC2"
+#service_launch_type = "EC2"
+service_launch_type = "FARGATE"
 service_task_count  = 3
 service_hosts = [
   "chip.linuxtips.demo"
