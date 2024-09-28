@@ -94,19 +94,21 @@ docker push $AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_C
 
 # Apply do Terraform - CD
 
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
 cd ../terraform
 
 REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
 echo "Deploy - Terraform init"
 
-terraform init -backend-config=environment/dev/backend.tfvars
+terraform init -backend-config=environment/$BRANCH_NAME/backend.tfvars
 
 echo "Deploy - Terraform Plan"
 
-terraform plan -var-file=environment/dev/terraform.tfvars
+terraform plan -var-file=environment/$BRANCH_NAME/terraform.tfvars
 
 echo "Deploy - Terraform Apply"
 
-terraform apply --auto-approve -var-file=environment/dev/terraform.tfvars
+terraform apply --auto-approve -var-file=environment/$BRANCH_NAME/terraform.tfvars
 

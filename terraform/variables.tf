@@ -158,6 +158,6 @@ variable "ssm_alb" {
 }
 
 variable "container_image" {
-  type = string
+  type        = string
   description = "imagem com tag para deployment de aplicação no ecs"
 }
