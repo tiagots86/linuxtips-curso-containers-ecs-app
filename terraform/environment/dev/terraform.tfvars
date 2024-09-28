@@ -50,15 +50,15 @@ service_healthcheck = {
 service_launch_type = [
   {
     capacity_provider = "FARGATE"
-    weight = 50
+    weight            = 50
   },
-    {
+  {
     capacity_provider = "FARGATE_SPOT"
-    weight = 50
+    weight            = 50
   }
 ]
 
-service_task_count  = 3
+service_task_count = 3
 service_hosts = [
   "chip.linuxtips.demo"
 ]
