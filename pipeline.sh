@@ -86,12 +86,27 @@ docker build -t app .
 
 docker tag app:latest $AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
+# Publish App
+
 echo "Build - Docker publish"
 
 docker push $AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
 
-# Publish App
-
-
-
 # Apply do Terraform - CD
+
+cd ../terraform
+
+REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GIT_COMMIT_HASH
+
+echo "Deploy - Terraform init"
+
+terraform init -backend-config=environment/dev/backend.tfvars
+
+echo "Deploy - Terraform Plan"
+
+terraform plan -var-file=environment/dev/terraform.tfvars
+
+echo "Deploy - Terraform Apply"
+
+terraform apply --auto-approve -var-file=environment/dev/terraform.tfvars
+

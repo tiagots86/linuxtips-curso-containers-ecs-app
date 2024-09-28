@@ -2,7 +2,7 @@ region = "us-east-1"
 
 cluster_name = "linuxtips-cluster-ecs"
 
-service_name = "chip"
+service_name = "linuxtips-app"
 
 service_port = 8080
 
@@ -60,7 +60,7 @@ service_launch_type = [
 
 service_task_count = 3
 service_hosts = [
-  "chip.linuxtips.demo"
+  "app.linuxtips.demo"
 ]
 
 #Scaling
