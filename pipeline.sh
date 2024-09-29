@@ -6,8 +6,7 @@ set -e
 AWS_ACCOUNT="481768428259"
 export AWS_PAGER=""
 export APP_NAME="linuxtips-app"
-
-
+export CLUSTER_NAME="linuxtips-cluster-ecs"
 
 # CI da App
 
@@ -111,4 +110,8 @@ terraform plan -var-file=environment/$BRANCH_NAME/terraform.tfvars
 echo "Deploy - Terraform Apply"
 
 terraform apply --auto-approve -var-file=environment/$BRANCH_NAME/terraform.tfvars
+
+echo "Deploy - Wait Deploy"
+
+aws ecs wait services-stable --cluster $CLUSTER_NAME --services $APP_NAME
 
