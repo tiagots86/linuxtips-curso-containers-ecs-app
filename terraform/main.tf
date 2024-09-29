@@ -1,5 +1,6 @@
 module "service" {
-  source                      = "../../linuxtips-curso-containers-ecs-service-module"
+  #source                      = "../../linuxtips-curso-containers-ecs-service-module"
+  source                      = "github.com/tiagots86/linuxtips-curso-containers-ecs-service-module?ref=v1"
   cluster_name                = var.cluster_name
   service_name                = var.service_name
   service_port                = var.service_port
