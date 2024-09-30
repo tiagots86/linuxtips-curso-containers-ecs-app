@@ -2,7 +2,7 @@ name: CI/CD Pipeline - Dev
 
 on:
   push:
-    branchs:
+    branches:
       - dev
 
 env:
@@ -11,3 +11,26 @@ env:
   APP_NAME: "linuxtips-app"
   CLUSTER_NAME: "linuxtips-cluster-ecs"
   REPOSITORY_NAME: "linuxtips/$APP_NAME"
+
+jobs:
+  ci-app:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Goland
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.22'
+
+    - name: Install Golint
+      run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.61.0
+
+    - name: Lint App
+      run: golangci-lint run ./... -E errcheck
+      working-directory: ./app
+
+    - name: Test App
+      run: go test -v
+      working-directory: ./app
