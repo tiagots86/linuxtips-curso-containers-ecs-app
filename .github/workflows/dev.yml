@@ -48,3 +48,19 @@ jobs:
 
     - name: Terraform Format
       run: terraform fmt --recursive --check
+
+    - name: Terraform Init
+      run: terraform init -backend-config=environment/${GITHUB_REF_NAME}/backend.tfvars
+      working-directory: ./terraform
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ env.AWS_REGION}}
+
+    - name: Terraform Validate
+      run: terraform init -backend-config=environment/${GITHUB_REF_NAME}/backend.tfvars
+      working-directory: ./terraform      
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ env.AWS_REGION}}
