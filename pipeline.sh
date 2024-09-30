@@ -104,11 +104,11 @@ REPOSITORY_TAG=$AWS_ACCOUNT.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY_NAME:$GI
 
 echo "Deploy - Terraform Plan"
 
-terraform plan -var-file=environment/$BRANCH_NAME/terraform.tfvars
+terraform plan -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
 
 echo "Deploy - Terraform Apply"
 
-terraform apply --auto-approve -var-file=environment/$BRANCH_NAME/terraform.tfvars
+terraform apply --auto-approve -var-file=environment/$BRANCH_NAME/terraform.tfvars -var container_image=$REPOSITORY_TAG
 
 echo "Deploy - Wait Deploy"
 
