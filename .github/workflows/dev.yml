@@ -32,11 +32,16 @@ jobs:
       working-directory: ./app
 
     - name: Test App
-      run: go test -v
+      run: go test -v ./...
       working-directory: ./app
 
   ci-terraform:
     runs-on: ubuntu-latest
     steps:
     - name: checkout repository
-      uses: actions/checkout@v4     
+      uses: actions/checkout@v4    
+    
+    - name: Setup Terraform
+      uses: hashcorp/setup-terraform@v3
+      with:
+        terraform_version: "1.5.7"
