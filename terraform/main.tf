@@ -1,6 +1,6 @@
 module "service" {
   #source                      = "../../linuxtips-curso-containers-ecs-service-module"
-  source                      = "github.com/tiagots86/linuxtips-curso-containers-ecs-service-module?ref=v1.0.1"
+  source                      = "github.com/tiagots86/linuxtips-curso-containers-ecs-service-module?ref=v2"
   cluster_name                = var.cluster_name
   service_name                = var.service_name
   service_port                = var.service_port
@@ -47,4 +47,15 @@ module "service" {
   scale_tracking_requests       = var.scale_tracking_requests
   alb_arn                       = data.aws_ssm_parameter.alb.value
   container_image               = var.container_image
+
+  #EFS
+  efs_volumes = [
+    {
+      volume_name      = "volume-de-exemplo"
+      file_system_id   = aws_efs_file_system.main.id
+      file_system_root = "/"
+      mount_point      = "mnt/efs"
+      ready_only       = false
+    }
+  ]
 }
