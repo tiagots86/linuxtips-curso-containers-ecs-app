@@ -10,22 +10,22 @@ module "service" {
   service_task_execution_role = aws_iam_role.main.arn
   region                      = var.region
   environment_variables       = var.environment_variables
-  secrets                     = [
+  secrets = [
     {
-      name = "VARIAVEL_COM_VALOR_DO_SSM"
+      name      = "VARIAVEL_COM_VALOR_DO_SSM"
       valueFrom = aws_ssm_parameter.teste.arn
     },
     {
-      name = "VARIAVEL_COM_VALOR_DO_SECRETS_MANAGER"
+      name      = "VARIAVEL_COM_VALOR_DO_SECRETS_MANAGER"
       valueFrom = aws_secretsmanager_secret.teste.arn
     },
 
   ]
-  capabilities                = var.capabilities
-  service_healthcheck         = var.service_healthcheck
-  service_launch_type         = var.service_launch_type
-  service_task_count          = var.service_task_count
-  service_hosts               = var.service_hosts
+  capabilities        = var.capabilities
+  service_healthcheck = var.service_healthcheck
+  service_launch_type = var.service_launch_type
+  service_task_count  = var.service_task_count
+  service_hosts       = var.service_hosts
 
   vpc_id = data.aws_ssm_parameter.vpc_id.value
   private_subnets = [
