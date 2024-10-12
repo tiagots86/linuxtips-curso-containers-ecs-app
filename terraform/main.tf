@@ -1,6 +1,6 @@
 module "service" {
   #source                      = "../../linuxtips-curso-containers-ecs-service-module"
-  source                      = "github.com/tiagots86/linuxtips-curso-containers-ecs-service-module?ref=v1.1.0"
+  source                      = "github.com/tiagots86/linuxtips-curso-containers-ecs-service-module?ref=v1.2.0"
   cluster_name                = var.cluster_name
   service_name                = var.service_name
   service_port                = var.service_port
@@ -10,6 +10,17 @@ module "service" {
   service_task_execution_role = aws_iam_role.main.arn
   region                      = var.region
   environment_variables       = var.environment_variables
+  secrets                     = [
+    {
+      name = "VARIAVEL_COM_VALOR_DO_SSM"
+      valueFrom = aws_ssm_parameter.teste.arn
+    },
+    {
+      name = "VARIAVEL_COM_VALOR_DO_SECRETS_MANAGER"
+      valueFrom = aws_secretsmanager_secret.teste.arn
+    },
+
+  ]
   capabilities                = var.capabilities
   service_healthcheck         = var.service_healthcheck
   service_launch_type         = var.service_launch_type
