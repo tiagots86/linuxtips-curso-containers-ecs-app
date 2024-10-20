@@ -12,7 +12,8 @@ service_memory = 512
 
 ssm_vpc_id = "/linuxtips-vpc/vpc/vpc_id"
 
-ssm_listener = "/linuxtips/ecs/lb/listener"
+#ssm_listener = "/linuxtips/ecs/lb/listener"
+ssm_listener = "/linuxtips/ecs/lb/internal/listener"
 
 ssm_private_subnet_1 = "/linuxtips-vpc/vpc/subnet_private_1a"
 
@@ -60,7 +61,8 @@ service_launch_type = [
 
 service_task_count = 3
 service_hosts = [
-  "app.linuxtips.demo"
+  #"app.linuxtips.demo"
+  "app.linuxtips-ecs-cluster.internal.com"
 ]
 
 #Scaling
@@ -89,4 +91,5 @@ scale_in_coodown              = 60
 scale_tracking_cpu = 50
 
 scale_tracking_requests = 30
-ssm_alb                 = "/linuxtips/ecs/lb/id"
+#ssm_alb                 = "/linuxtips/ecs/lb/id"
+ssm_alb                 = "/linuxtips/ecs/lb/internal/id"
