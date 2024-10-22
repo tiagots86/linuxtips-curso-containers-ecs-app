@@ -69,4 +69,6 @@ module "service" {
       ready_only       = false
     }
   ]
+
+  service_discovery_namespace = data.aws_ssm_parameter.service_discovery_namespace.value
 }

@@ -92,4 +92,6 @@ scale_tracking_cpu = 50
 
 scale_tracking_requests = 30
 #ssm_alb                 = "/linuxtips/ecs/lb/id"
-ssm_alb                 = "/linuxtips/ecs/lb/internal/id"
+ssm_alb = "/linuxtips/ecs/lb/internal/id"
+
+ssm_service_discovery_namespace = "/linuxtips/ecs/cloudmap/namespace"
