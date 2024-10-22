@@ -17,7 +17,7 @@ module "service" {
     },
     {
       name      = "VARIAVEL_COM_VALOR_DO_SECRETS_MANAGER"
-      valueFrom = aws_secretsmanager_secret.teste.arn
+      valueFrom = aws_secretsmanager_secret.teste2.arn
     },
 
   ]
