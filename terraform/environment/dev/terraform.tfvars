@@ -1,6 +1,6 @@
 region = "us-east-1"
 
-cluster_name = "linuxtips-cluster-ecs"
+cluster_name = "linuxtips-ecs-cluster"
 
 service_name = "linuxtips-app"
 

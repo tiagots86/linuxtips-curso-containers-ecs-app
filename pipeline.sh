@@ -6,7 +6,7 @@ set -e
 AWS_ACCOUNT="481768428259"
 export AWS_PAGER=""
 export APP_NAME="linuxtips-app"
-export CLUSTER_NAME="linuxtips-cluster-ecs"
+export CLUSTER_NAME="linuxtips-ecs-cluster"
 export BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 # CI da App
